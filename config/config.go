@@ -34,13 +34,6 @@ func Load() (*Config, error) {
 		return cfg, nil
 
 	case "postgres":
-		// PostgreSQL разрешён только при запуске в Docker.
-		if os.Getenv("IN_DOCKER") != "true" {
-			return nil, fmt.Errorf(
-				"STORAGE=postgres is supported only in Docker; use STORAGE=memory locally",
-			)
-		}
-
 		cfg.DatabaseURL = os.Getenv("DATABASE_URL")
 		if cfg.DatabaseURL == "" {
 			return nil, fmt.Errorf(

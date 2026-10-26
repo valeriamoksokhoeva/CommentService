@@ -24,8 +24,6 @@ import (
 	"strconv"
 )
 
-const defaultPort = "8080"
-
 func main() {
 	cfg, err := config.Load()
 	if err != nil {
